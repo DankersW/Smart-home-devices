@@ -1,17 +1,25 @@
 # To-Do
 
 ## Documentation
-- [ ] Update readme with recent info
+
 - [ ] Update architectural overview
+- [ ] instructions on flashing
 
 ## Logging
-- [ ] Some sort of logging
 
-## Embedded
-- [x] If a devices boots up send a message to attach and if it is going down a detach message
-- [ ] Get battery status of device
-- [ ] On low battery call a disconnect function
-- [ ] On low battery send out email to recharge 
+- [ ] Configurable logging class that logs to console, and remote logging using the communication layer
 
-## CI
-- [ ] Github actions and tests
+## Dev-env
+
+- [ ] Proper development enviroment
+- [ ] Testing framework, local and on github
+- [ ] Repo structure
+
+## System
+
+- [ ] Monitor battery life
+- [ ] Communication layer
+- [ ] Configurable base layer
+- [ ] Generic base that each unit relies on with additional product functions (temperature reading, acting to events, etc)
+- [ ] Sensor reading layer
+- [ ] Actor layer
