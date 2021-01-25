@@ -14,6 +14,7 @@
 - [ ] Proper development enviroment
 - [ ] Testing framework, local and on github
 - [ ] Repo structure
+- [ ] Learn about CMake
 
 ## System
 
