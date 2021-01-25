@@ -15,6 +15,7 @@
 - [ ] Testing framework, local and on github
 - [ ] Repo structure
 - [ ] Learn about CMake
+- [ ] Cmake for arduino
 
 ## System
 
