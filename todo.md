@@ -16,6 +16,8 @@
 - [ ] Repo structure
 - [ ] Learn about CMake
 - [ ] Cmake for arduino
+- [ ] Static code analysis
+- [ ] Actions on [github](https://github.com/arduino/arduino-cli-example/blob/master/.github/workflows/test.yaml)
 
 ## System
 
@@ -25,3 +27,4 @@
 - [ ] Generic base that each unit relies on with additional product functions (temperature reading, acting to events, etc)
 - [ ] Sensor reading layer
 - [ ] Actor layer
+- [ ] Radio layer

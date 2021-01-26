@@ -4,6 +4,7 @@ build/
 
 # Idea
 .idea/
+.vscode/
 
 # Compiled Object files
 *.slo
