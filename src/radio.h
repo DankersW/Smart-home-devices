@@ -7,4 +7,5 @@ public:
     ~Radio();
 
     int get_state();
+    bool get_true();
 };
