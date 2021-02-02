@@ -8,11 +8,10 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Setup Arduino CLI
-      uses: arduino/setup-arduino-cli@v1.0.0
+      uses: arduino/setup-arduino-cli@v1.1.1
 
     - name: pwd
-      run: |
-        pwd
+      run: pwd
 
     - name: Install platform
       run: |
