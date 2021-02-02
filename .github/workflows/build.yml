@@ -4,10 +4,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build all example sketches
-      uses: Legion2/arduino-builder-action@v2.0.0
-      with:
-        board: "arduino:avr:leonardo"
-        #sketchDirectory: "smart-home-devices"
-        sketch: "smart-home-devices/smart_home_devices.ino"
+    - name: Checkout branch
+      uses: actions/checkout@v2
+
+    - name: Setup Arduino CLI
+      uses: arduino/setup-arduino-cli@v1.0.0
+
+    - name: pwd
+      run: |
+        pwd
+
+    - name: Install platform
+      run: |
+        pwd
+        arduino-cli core update-index
+        arduino-cli core install arduino:avr
