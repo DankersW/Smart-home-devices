@@ -8,4 +8,6 @@ public:
 
     int get_state();
     bool get_true();
+
+    double square_root (const double);
 };
