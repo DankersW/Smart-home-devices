@@ -1,0 +1,32 @@
+name: build
+
+on: [push]
+
+jobs:
+  build-matrix:
+    strategy:
+      matrix:
+        arduino-platform: ["nodemcu_v0.9", "arduino_uno"]
+        include:
+          - arduino-platform: "nodemcu_v0.9"
+            core: "esp8266:esp8266"
+            fqbn: "esp8266:esp8266:nodemcu"
+          - arduino-platform: "arduino_uno"
+            core: "arduino:avr"
+            fqbn: "arduino:avr:uno"
+
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout branch
+      uses: actions/checkout@v2
+
+    - name: Setup Arduino CLI
+      uses: arduino/setup-arduino-cli@v1.1.1
+
+    - name: Install Arduino platforms
+      run: |
+        arduino-cli core update-index
+        arduino-cli core install ${{ matrix.core }}
+    
+    - name: Build platforms
+      run: arduino-cli compile -b ${{ matrix.fqbn }} 

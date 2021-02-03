@@ -11,10 +11,11 @@
 
 ## Dev-env
 
-- [ ] Proper development enviroment
 - [ ] Testing framework, local and on github
-- [ ] Repo structure
+- [ ] Static code analysis, local and on github
+- [ ] Code coverage, local and on github
 - [ ] Learn about CMake
+- [ ] Cmake for arduino
 
 ## System
 
@@ -24,3 +25,4 @@
 - [ ] Generic base that each unit relies on with additional product functions (temperature reading, acting to events, etc)
 - [ ] Sensor reading layer
 - [ ] Actor layer
+- [ ] Radio layer

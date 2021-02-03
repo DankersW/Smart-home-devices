@@ -1,8 +1,10 @@
 # Prerequisites
 *.d
+build/
 
 # Idea
-.idea
+.idea/
+.vscode/
 
 # Compiled Object files
 *.slo
