@@ -1,7 +1,8 @@
 # MQTT Configuration
+
 This document specifies how MQTT between our IoT deviced and the on-site server is setup. These devices are at the 
 using a not-sercured version of MQTT because of the security overhead on the IoT devices as well as these devices are 
-not directly connected to the internet. 
+not directly connected to the internet.
 
 |               | Info          |
 | ------------- |:-------------:|
@@ -9,19 +10,21 @@ not directly connected to the internet.
 | MQTT address  | 192.168.1.125 |
 | MQTT port     | 1883          |
 
-
 Each device has its own device id e.q. (device-001). There exist 3 topics, one subscription, one publish, and one
-general topic. 
+general topic.
 The general structure of the topics follows the pattern:
-```
+
+```text
 iot/device_id/topic
 ```
 
 ## Topics
 
 ### Wildcard topic
+
 Used <b> only </b> by the device gateway running on the home server. In this way the server can subscribe to all the connected 
 devices at once. It distinguishes between which device has sends what by using the device ID
+
 ```
 iot/#
 ```

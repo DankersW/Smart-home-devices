@@ -18,6 +18,13 @@ jobs:
         pwd
         arduino-cli core update-index
         arduino-cli core install arduino:avr
+        arduino-cli core install esp8266:esp8266
     
-    - name: Build
-      run: arduino-cli compile -b arduino:avr:uno
+    - name: Build nodemcu
+      run: |
+        arduino-cli compile -b esp8266:esp8266:nodemcu
+
+    - name: Build uno
+      run: |
+        arduino-cli compile -b arduino:avr:uno
+    

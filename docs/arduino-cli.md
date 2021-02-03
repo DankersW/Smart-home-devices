@@ -17,3 +17,11 @@ board_manager:
     - http://arduino.esp8266.com/stable/package_esp8266com_index.json
     - https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
 ```
+
+## Compile for NodeMCU V0.9
+
+Location is in the root folder of the project.
+
+```bash
+arduino-cli compile -b esp8266:esp8266:nodemcu
+```
