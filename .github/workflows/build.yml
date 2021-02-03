@@ -1,7 +1,18 @@
-name: Build examples
+name: build
+
 on: push
+
 jobs:
-  build:
+  build-matrix:
+    strategy:
+      matrix:
+        arduino-platform: ["arduino:samd", "arduino:avr"]
+        include:
+          - arduino-platform: "arduino:samd"
+            fqbn: "arduino:samd:nano_33_iot"
+          - arduino-platform: "arduino:avr"
+            fqbn: "arduino:avr:unowifi"
+
     runs-on: ubuntu-latest
     steps:
     - name: Checkout branch
@@ -10,21 +21,19 @@ jobs:
     - name: Setup Arduino CLI
       uses: arduino/setup-arduino-cli@v1.1.1
 
-    - name: pwd
-      run: pwd
-
-    - name: Install platform
+    - name: Install Arduino platforms
       run: |
-        pwd
         arduino-cli core update-index
-        arduino-cli core install arduino:avr
-        arduino-cli core install esp8266:esp8266
+        arduino-cli core install ${{ matrix.arduino-platform }}
+      #arduino-cli core install arduino:avr
+      # arduino-cli core install esp8266:esp8266
     
-    - name: Build nodemcu
+    - name: Build platforms
       run: |
-        arduino-cli compile -b esp8266:esp8266:nodemcu
+        arduino-cli compile --fqbn ${{ matrix.fqbn }} 
+      #arduino-cli compile -b esp8266:esp8266:nodemcu
 
-    - name: Build uno
-      run: |
-        arduino-cli compile -b arduino:avr:uno
+    #- name: Build uno
+    #  run: |
+    #    arduino-cli compile -b arduino:avr:uno
     
