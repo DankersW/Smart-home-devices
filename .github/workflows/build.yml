@@ -6,12 +6,14 @@ jobs:
   build-matrix:
     strategy:
       matrix:
-        arduino-platform: ["arduino:samd", "arduino:avr"]
+        arduino-platform: ["nodemcu_v0.9", "arduino_uno"]
         include:
-          - arduino-platform: "arduino:samd"
-            fqbn: "arduino:samd:nano_33_iot"
-          - arduino-platform: "arduino:avr"
-            fqbn: "arduino:avr:unowifi"
+          - arduino-platform: "nodemcu_v0.9"
+            core: "esp8266:esp8266"
+            fqbn: "esp8266:esp8266:nodemcu"
+          - arduino-platform: "arduino_uno"
+            core: "arduino:avr"
+            fqbn: "arduino:avr:uno"
 
     runs-on: ubuntu-latest
     steps:
@@ -24,16 +26,7 @@ jobs:
     - name: Install Arduino platforms
       run: |
         arduino-cli core update-index
-        arduino-cli core install ${{ matrix.arduino-platform }}
-      #arduino-cli core install arduino:avr
-      # arduino-cli core install esp8266:esp8266
+        arduino-cli core install ${{ matrix.core }}
     
     - name: Build platforms
-      run: |
-        arduino-cli compile --fqbn ${{ matrix.fqbn }} 
-      #arduino-cli compile -b esp8266:esp8266:nodemcu
-
-    #- name: Build uno
-    #  run: |
-    #    arduino-cli compile -b arduino:avr:uno
-    
+      run: arduino-cli compile -b ${{ matrix.fqbn }} 

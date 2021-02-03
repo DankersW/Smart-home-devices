@@ -18,7 +18,7 @@
 - [ ] Cmake for arduino
 - [ ] Static code analysis
 - [ ] Actions on [github](https://github.com/arduino/arduino-cli-example/blob/master/.github/workflows/test.yaml)
-- [ ] Action for: unit-test, linting, build, code-coverage 
+- [ ] Action for: unit-test, linting, build, code-coverage
 
 ## System
 
