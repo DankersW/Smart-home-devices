@@ -1,4 +1,4 @@
-#include "radio.h"
+#include "src/radio.h"
 
 Radio::Radio(/* args */)
 {
@@ -7,7 +7,6 @@ Radio::Radio(/* args */)
 
 Radio::~Radio()
 {
-
 }
 
 int Radio::get_state()

@@ -11,13 +11,11 @@
 
 ## Dev-env
 
-- [ ] Proper development enviroment
 - [ ] Testing framework, local and on github
-- [ ] Repo structure
+- [ ] Static code analysis, local and on github
+- [ ] Code coverage, local and on github
 - [ ] Learn about CMake
 - [ ] Cmake for arduino
-- [ ] Static code analysis
-- [ ] Action for: unit-test, linting, build, code-coverage
 
 ## System
 
