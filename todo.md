@@ -23,3 +23,5 @@
 - Sensor reading layer
 - Actor layer
 - Radio layer
+- hardware configuration: based on hardwired io pins setup type of device, e.q. 0101 = weather station
+- publish device information to framework on startup
