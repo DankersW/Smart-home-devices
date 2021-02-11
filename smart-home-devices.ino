@@ -4,15 +4,13 @@
 #define LED_BUILTIN 2
 
 
-
-Radio *radio;
+Radio *radio = new Radio();
 
 void setup()
 {
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, HIGH); 
     
-    radio = new Radio();
     radio->begin();
 
     blink_sequence();

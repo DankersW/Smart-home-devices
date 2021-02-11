@@ -27,6 +27,7 @@ jobs:
       run: |
         arduino-cli core update-index
         arduino-cli core install ${{ matrix.core }}
+        arduino-cli lib update-index
     
     - name: Build platforms
       run: arduino-cli compile -b ${{ matrix.fqbn }} 
