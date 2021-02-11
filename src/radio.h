@@ -1,14 +1,24 @@
-class Radio
+#ifndef RADIO_H
+#define RADIO_H
+
+#include <Arduino.h>
+#include <ESP8266WiFi.h>
+
+class Radio 
 {
     private:
-        int _state = 1;
-        
+        struct credentials
+        {
+            const char* ssid = "SaveOurWinters";
+            const char* pwd =  "prettyflyforawifi";
+        } _wifi_cred;
+
+        bool _connect_to_network();
+
     public:
-        Radio(/* args */);
-        ~Radio();
-
-        int get_state();
-        bool get_true();
-
-        double square_root (const double);
+        Radio(){}
+        ~Radio(){}
+        void begin();
 };
+
+#endif

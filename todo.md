@@ -23,3 +23,13 @@
 - Sensor reading layer
 - Actor layer
 - Radio layer
+- hardware configuration: based on hardwired io pins setup type of device, e.q. 0101 = weather station
+- software configuration: using a header file contataining a struct to hold device data
+- publish device information to framework on startup
+
+- good pattern holder inter layer communication
+- setup basic layers (communication, actor, enegery managment, processing, sensor, logging)
+
+### PR result
+
+Make the radio layer connect to wifi, using arduino wifi lib

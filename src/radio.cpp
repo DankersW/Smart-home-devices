@@ -1,20 +1,14 @@
 #include "radio.h"
 
-Radio::Radio(/* args */)
+
+void Radio::begin()
 {
-    _state = 1;
+    bool connected = _connect_to_network();
 }
 
-Radio::~Radio()
+bool Radio::_connect_to_network()
 {
-}
-
-int Radio::get_state()
-{
-    return _state;
-}
-
-bool Radio::get_true()
-{
+    WiFi.begin(_wifi_cred.ssid, _wifi_cred.pwd);
+    while (WiFi.status() != WL_CONNECTED){ delay(250); }
     return true;
 }

@@ -6,14 +6,14 @@ jobs:
   build-matrix:
     strategy:
       matrix:
-        arduino-platform: ["nodemcu_v0.9", "arduino_uno"]
+        arduino-platform: ["nodemcu_v0.9"] #, "arduino_uno"]
         include:
           - arduino-platform: "nodemcu_v0.9"
             core: "esp8266:esp8266"
             fqbn: "esp8266:esp8266:nodemcu"
-          - arduino-platform: "arduino_uno"
-            core: "arduino:avr"
-            fqbn: "arduino:avr:uno"
+          #- arduino-platform: "arduino_uno"
+          #  core: "arduino:avr"
+          #  fqbn: "arduino:avr:uno"
 
     runs-on: ubuntu-latest
     steps:
@@ -27,6 +27,7 @@ jobs:
       run: |
         arduino-cli core update-index
         arduino-cli core install ${{ matrix.core }}
+        arduino-cli lib update-index
     
     - name: Build platforms
       run: arduino-cli compile -b ${{ matrix.fqbn }} 
