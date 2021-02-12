@@ -5,6 +5,7 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
+
 class Radio 
 {
     private:
@@ -15,11 +16,12 @@ class Radio
         } _wifi_cred;
         struct mqtt_details
         {
-            const char* broker = "192.168.1.125";
+            const char* broker = "192.168.1.83";
             const int port = 1883;
+            const char* device_id = "dev_001";
         } _mqtt_info;
 
-        //WiFiClient _espClient;
+        WiFiClient _wifi_client;
         PubSubClient _mqtt_client;
 
         bool connect_to_network();
@@ -31,6 +33,7 @@ class Radio
         Radio();
         ~Radio(){}
         void begin();
+        void loop();
 };
 
 #endif

@@ -1,13 +1,11 @@
 #include "radio.h"
 
-Radio::Radio()
+Radio::Radio() : _mqtt_client(_wifi_client)
 {
-    //_mqtt_client(this->_espClient);
 }
 
 void Radio::begin()
 {
-    //_mqtt_client(WiFiClient _espClient);
     connect_to_network();
     connect_to_mqtt_broker();
 }
@@ -27,10 +25,21 @@ bool Radio::connect_to_mqtt_broker()
         this->mqtt_msg_received(topic, payload, length);
     });
 
-    while (!_mqtt_client.connected()){ delay(250); }
+    while (!_mqtt_client.connected())
+    {
+        _mqtt_client.connect(_mqtt_info.device_id);
+        delay(250); 
+    }
     return true;
 }
 
 void Radio::mqtt_msg_received(char* topic, byte* payload, unsigned int length)
 {
+    //Serial.println("payload: " + payload);
+    //Serial.println("topic: " + topic);
+}
+
+void Radio::loop()
+{
+    _mqtt_client.loop();
 }
