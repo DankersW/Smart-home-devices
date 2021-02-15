@@ -7,6 +7,8 @@
 Radio *radio = new Radio();
 Sensor *sensor = new Sensor();
 
+Sensor::SensorData sensor_data = {};
+
 void setup()
 {
     Serial.begin(9600);
@@ -21,10 +23,15 @@ void setup()
 void loop()
 {
     digitalWrite(LED_BUILTIN, LOW);
-    radio->loop(); 
+    //radio->loop(); 
 
-    radio->publish("iot/test", "hello world");
-    delay(500);
+    sensor_data = sensor->read();
+    Serial.println(sensor_data.temp);
+    Serial.println(sensor_data.humi);
+    Serial.println("");
+
+    //radio->publish("iot/test", "hello world");
+    delay(3000);
 }
 
 void blink_sequence()
