@@ -1,13 +1,15 @@
 #include <Arduino.h>
 #include "src/radio.h"
+#include <PubSubClient.h>
 
 #define LED_BUILTIN 2
 
-
 Radio *radio = new Radio();
+
 
 void setup()
 {
+    Serial.begin(9600);
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, HIGH); 
     
@@ -18,7 +20,11 @@ void setup()
 
 void loop()
 {
-    digitalWrite(LED_BUILTIN, LOW); 
+    digitalWrite(LED_BUILTIN, LOW);
+    radio->loop(); 
+
+    radio->publish("iot/test", "hello world");
+    delay(500);
 }
 
 void blink_sequence()

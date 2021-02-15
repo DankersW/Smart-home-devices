@@ -3,6 +3,8 @@
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
 
 class Radio 
 {
@@ -12,13 +14,27 @@ class Radio
             const char* ssid = "SaveOurWinters";
             const char* pwd =  "prettyflyforawifi";
         } _wifi_cred;
+        struct mqtt_details
+        {
+            const char* broker = "192.168.1.83";
+            const int port = 1883;
+            const char* device_id = "dev_001";
+        } _mqtt_info;
 
-        bool _connect_to_network();
+        WiFiClient _wifi_client;
+        PubSubClient _mqtt_client;
 
+        bool connect_to_network();
+        bool connect_to_mqtt_broker();
+
+        void mqtt_msg_received(char* topic, byte* payload, unsigned int length);
+        
     public:
-        Radio(){}
+        Radio();
         ~Radio(){}
         void begin();
+        void loop();
+        bool publish(const char* topic, const char* payload);
 };
 
 #endif

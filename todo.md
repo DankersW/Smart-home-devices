@@ -30,6 +30,9 @@
 - good pattern holder inter layer communication
 - setup basic layers (communication, actor, enegery managment, processing, sensor, logging)
 
-### PR result
+### Radio
 
-Make the radio layer connect to wifi, using arduino wifi lib
+- Reconnect to mqtt broker or wifi if any of the connections if lost
+- listen to messages over mqtt and implement a command factory
+
+### PR result
