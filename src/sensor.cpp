@@ -2,6 +2,7 @@
 
 Sensor::Sensor() : _dht(_pin_dht11, _type_dht)
 {
+    _dht.begin();
 }
 
 Sensor::~Sensor()
