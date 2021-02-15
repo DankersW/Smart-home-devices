@@ -1,11 +1,11 @@
 #include <Arduino.h>
 #include "src/radio.h"
-#include <PubSubClient.h>
+#include "src/sensor.h"
 
 #define LED_BUILTIN 2
 
 Radio *radio = new Radio();
-
+Sensor *sensor = new Sensor();
 
 void setup()
 {
