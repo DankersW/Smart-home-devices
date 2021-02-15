@@ -30,16 +30,21 @@ bool Radio::connect_to_mqtt_broker()
         _mqtt_client.connect(_mqtt_info.device_id);
         delay(250); 
     }
+    _mqtt_client.subscribe("iot/#");
     return true;
 }
 
 void Radio::mqtt_msg_received(char* topic, byte* payload, unsigned int length)
 {
-    //Serial.println("payload: " + payload);
-    //Serial.println("topic: " + topic);
+    Serial.println("message received");
 }
 
 void Radio::loop()
 {
     _mqtt_client.loop();
+}
+
+bool Radio::publish(const char* topic, const char* payload)
+{
+    return _mqtt_client.publish(topic, payload);
 }

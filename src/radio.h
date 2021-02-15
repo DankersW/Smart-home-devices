@@ -34,6 +34,7 @@ class Radio
         ~Radio(){}
         void begin();
         void loop();
+        bool publish(const char* topic, const char* payload);
 };
 
 #endif

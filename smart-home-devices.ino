@@ -22,6 +22,9 @@ void loop()
 {
     digitalWrite(LED_BUILTIN, LOW);
     radio->loop(); 
+
+    radio->publish("iot/test", "hello world");
+    delay(500);
 }
 
 void blink_sequence()

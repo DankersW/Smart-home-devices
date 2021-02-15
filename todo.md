@@ -30,8 +30,9 @@
 - good pattern holder inter layer communication
 - setup basic layers (communication, actor, enegery managment, processing, sensor, logging)
 
-### PR result
+### Radio
 
-implement espMqtt [lib](https://github.com/plapointe6/EspMQTTClient)
-publish method
-listen method
+- Reconnect to mqtt broker or wifi if any of the connections if lost
+- listen to messages over mqtt and implement a command factory
+
+### PR result
