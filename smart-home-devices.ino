@@ -25,10 +25,10 @@ void loop()
 {
     radio->loop(); 
 
-    sensor_data = sensor->read();
-    String str = String(sensor_data.temp);
+    sensor_data = sensor->poll();
+    String temp_str = String(sensor_data.temp);
 
-    radio->publish("iot/dev001/temp", str.c_str());
+    radio->publish("iot/dev001/temp", temp_str.c_str());
 
     delay(2000);
 }

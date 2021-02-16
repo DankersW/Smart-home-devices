@@ -25,7 +25,7 @@ public:
     ~Sensor();
     float get_temperature();
     float get_humidity();
-    SensorData read();
+    SensorData poll();
 };
 
 #endif
