@@ -28,7 +28,7 @@ jobs:
     - name: Download libraries
       run: | 
         arduino-cli lib update-index
-        arduino-cli lib install PubSubClient
+        arduino-cli lib install "PubSubClient" "DHT sensor library" "Adafruit Unified Sensor"
 
     - name: Build platforms
       run: arduino-cli compile -b ${{ matrix.fqbn }} 

@@ -9,12 +9,12 @@
 class Radio 
 {
     private:
-        struct credentials
+        struct Credentials
         {
             const char* ssid = "SaveOurWinters";
             const char* pwd =  "prettyflyforawifi";
         } _wifi_cred;
-        struct mqtt_details
+        struct Mqtt_details
         {
             const char* broker = "192.168.1.83";
             const int port = 1883;

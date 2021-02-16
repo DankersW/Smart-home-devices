@@ -35,4 +35,15 @@
 - Reconnect to mqtt broker or wifi if any of the connections if lost
 - listen to messages over mqtt and implement a command factory
 
+### Sensor
+
+- Poll sensors (DHT11) in a non delay controlled way every 2 seconds.
+- Update sensor data struct with different extra parameters
+
+### System.ino
+
+- Seting device name
+- Publising sensor data correctly
+- To publish queue
+
 ### PR result
