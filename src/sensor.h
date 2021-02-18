@@ -2,6 +2,7 @@
 #define SENSOR_H
 
 #include <DHT.h>
+#include "types.h"
 
 class Sensor
 {
@@ -14,12 +15,9 @@ private:
     float _temp = 0.0;
     float _humi = 0.0;
 
+    SensorData _data;
+
 public:
-    struct SensorData
-    {
-        float temp = NULL;
-        float humi = NULL;
-    } _data;
     
     Sensor();
     ~Sensor();

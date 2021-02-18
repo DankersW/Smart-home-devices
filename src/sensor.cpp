@@ -19,7 +19,7 @@ float Sensor::get_humidity()
     return _data.humi;
 }
 
-Sensor::SensorData Sensor::poll()
+SensorData Sensor::poll()
 {
     _data.temp = _dht.readTemperature();
     _data.humi = _dht.readHumidity();

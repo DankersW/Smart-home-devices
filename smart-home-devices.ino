@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "src/types.h"
 #include "src/radio.h"
 #include "src/sensor.h"
 
@@ -7,7 +8,7 @@
 Radio *radio = new Radio();
 Sensor *sensor = new Sensor();
 
-Sensor::SensorData sensor_data = {};
+SensorData sensor_data = {};
 
 
 void setup()
