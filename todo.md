@@ -12,10 +12,11 @@
 
 - Testing framework, local and on github
 - Code coverage, local and on github
-- Cmake for arduino
+- Cmake for arduino (AVR platform)
 
 ## System
 
+- Cleaning up memory, because of the keywork new when we create objects we have to delete memory. Every hour delete each object and re-create the system.
 - Monitor battery life
 - Communication layer
 - Configurable base layer
