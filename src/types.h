@@ -3,8 +3,8 @@
 
 struct SensorData
 {
-    float temp = NULL;
-    float humi = NULL;
+    float temp;
+    float humi;
 };
 
 #endif
