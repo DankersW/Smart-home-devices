@@ -29,8 +29,10 @@ void loop()
     radio->loop(); 
     sensor_data = sensor->poll();
     
+    std::string test = serializer->to_string();
+
     const uint8_t* sensor_info = serializer->to_byte_array(sensor_data);
-    radio->publish("iot/dev001/temp", sensor_info, 7);
+    //radio->publish("iot/dev001/temp", sensor_info, 7);
     
     String temp_str = String(sensor_data.temp);
     radio->publish("iot/dev001/temp", temp_str.c_str());
