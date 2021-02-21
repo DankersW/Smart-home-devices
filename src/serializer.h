@@ -2,16 +2,16 @@
 #define SERIALIZER_H
 
 #include "types.h"
+#include <sstream>
 
 class Serializer
 {
 private:
-    
+    std::string cast_to_string(float value, int precision);
 public:
     Serializer();
     ~Serializer();
-    const uint8_t* to_byte_array(SensorData sensor_data);
-    std::string to_string();
+    std::string to_json(SensorData sensor_data);
 };
 
 Serializer::Serializer()
@@ -22,17 +22,22 @@ Serializer::~Serializer()
 {
 }
 
-const uint8_t* Serializer::to_byte_array(SensorData sensor_data)
+std::string Serializer::cast_to_string(float value, int precision=2)
 {
-    // todo: get length
-    static const uint8_t buffer[] = { 5, 7, 3, 4, 9, 1, 3 };
-    return buffer;
+    std::ostringstream string_stream;
+    string_stream.precision(precision);
+    string_stream << std::fixed << value;
+    return string_stream.str();
 }
 
-std::string Serializer::to_string()
+std::string Serializer::to_json(SensorData data)
 {
-    std::string hello = "hello";
-    return hello;
-}
+    std::string json = "{";
+    json += "\"temperature\": " + cast_to_string(data.temp) + ", ";
+    json += "\"humidity\": " + cast_to_string(data.humi);
+    json += "}";
+
+    return json;
+}   
 
 #endif

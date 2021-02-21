@@ -2,13 +2,14 @@
 #include "src/types.h"
 #include "src/radio.h"
 #include "src/sensor.h"
-#include "src/serializer.h"
+//#include "src/serializer.h"
 
 #define LED_BUILTIN 2
 
-Radio *radio = new Radio();
-Sensor *sensor = new Sensor();
-Serializer *serializer = new Serializer();
+Sensor sensor = Sensor();
+Radio radio = Radio();
+
+Serializer serializer = Serializer();
 
 SensorData sensor_data = {};
 
@@ -19,25 +20,25 @@ void setup()
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, HIGH); 
     
-    radio->begin();
+    radio.begin();
 
     blink_sequence();
 }
 
 void loop()
 {
-    radio->loop(); 
-    sensor_data = sensor->poll();
-    
-    std::string test = serializer->to_string();
-
-    const uint8_t* sensor_info = serializer->to_byte_array(sensor_data);
-    //radio->publish("iot/dev001/temp", sensor_info, 7);
-    
-    String temp_str = String(sensor_data.temp);
-    radio->publish("iot/dev001/temp", temp_str.c_str());
-
     delay(2000);
+    radio.loop(); 
+    sensor_data = sensor.poll();
+
+    Serial.println(sensor_data.humi);
+    Serial.println(sensor_data.temp);
+    
+    //std::string json_message = serializer->to_json(sensor_data);
+    //Serial.println(json_message.c_str());
+    //radio->publish("iot/devices/test_device_001/telemetry", json_message.c_str());
+
+    
 }
 
 void blink_sequence()

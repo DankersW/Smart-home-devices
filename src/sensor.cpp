@@ -21,8 +21,10 @@ float Sensor::get_humidity()
 
 SensorData Sensor::poll()
 {
+    Serial.println(_dht.readTemperature());
+
     _data.temp = _dht.readTemperature();
     _data.humi = _dht.readHumidity();
-
+    Serial.println(_data.humi);
     return _data;
 }
