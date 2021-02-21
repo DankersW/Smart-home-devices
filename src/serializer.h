@@ -12,6 +12,7 @@ public:
     Serializer();
     ~Serializer();
     std::string to_json(SensorData sensor_data);
+    int get();
 };
 
 #endif

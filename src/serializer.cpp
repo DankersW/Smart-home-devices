@@ -25,3 +25,8 @@ std::string Serializer::to_json(SensorData data)
     json += "}";
     return json;
 }   
+
+int Serializer::get()
+{
+    return 2;
+}
