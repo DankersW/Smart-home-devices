@@ -1,30 +1,22 @@
 #include "sensor.h"
 
-Sensor::Sensor() : _dht(_pin_dht11, _type_dht)
+Sensor::Sensor()
 {
-    _dht.begin();
+    _dht = new DHT(_pin_dht11, _type_dht);
 }
 
 Sensor::~Sensor()
 {
 }
 
-float Sensor::get_temperature()
+void Sensor::begin()
 {
-    return _data.temp;
-}
-
-float Sensor::get_humidity()
-{
-    return _data.humi;
+    _dht->begin();
 }
 
 SensorData Sensor::poll()
 {
-    Serial.println(_dht.readTemperature());
-
-    _data.temp = _dht.readTemperature();
-    _data.humi = _dht.readHumidity();
-    Serial.println(_data.humi);
+    _data.temp = _dht->readTemperature();
+    _data.humi = _dht->readHumidity();
     return _data;
 }
