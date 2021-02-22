@@ -10,7 +10,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install tools
-        uses: apt-get install cmake
+        uses: |
+          apt install cmake
 
       - name: Create build dir 
         run: mkdir build && cd build
