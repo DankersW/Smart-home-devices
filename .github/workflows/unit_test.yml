@@ -12,8 +12,18 @@ jobs:
       - name: Install packages
         run: sudo apt-get install cmake
 
+      - name: PWD
+        run: |
+          pwd
+          ls -l
+
       - name: Create build dir 
         run: mkdir build && cd build
+      
+      - name: pwd a
+        run: |
+          pwd
+          ls -l
 
       - name: Build
         run: cmake .
