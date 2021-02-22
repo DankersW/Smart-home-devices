@@ -1,0 +1,42 @@
+name: unit_test
+
+on:
+  push:
+    branches-ignore:
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install cmake
+
+      - name: PWD
+        run: |
+          pwd
+          ls -l
+          find -name "CMakelists.txt"
+
+      - name: Build
+        run: |
+          cmake --version
+          ls -l
+          mkdir build
+          cd build
+          pwd
+          ls -l
+          ls -l ..
+          cmake ..
+          make 
+          make test
+
+      - name: Run tests
+        run: make test
+
+    

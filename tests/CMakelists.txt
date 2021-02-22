@@ -1,0 +1,19 @@
+project(smart_home_devices_tests)
+
+
+include_directories(
+    ../src
+)
+
+
+# Test Serializer
+add_executable(TestSerializer
+    main.cpp
+    TestSerializer.cpp
+)
+target_link_libraries(TestSerializer 
+    libSerializer
+)   
+
+
+add_test(NAME test_serializer COMMAND TestSerializer)

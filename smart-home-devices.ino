@@ -1,14 +1,14 @@
 #include <Arduino.h>
+#include "src/types.h"
 #include "src/radio.h"
 #include "src/sensor.h"
+#include "src/serializer.h"
 
 #define LED_BUILTIN 2
 
-Radio *radio = new Radio();
 Sensor *sensor = new Sensor();
-
-Sensor::SensorData sensor_data = {};
-
+Radio *radio = new Radio();
+Serializer *serializer = new Serializer();
 
 void setup()
 {
@@ -17,18 +17,19 @@ void setup()
     digitalWrite(LED_BUILTIN, HIGH); 
     
     radio->begin();
+    sensor->begin();
 
     blink_sequence();
 }
 
 void loop()
-{
+{    
     radio->loop(); 
 
-    sensor_data = sensor->poll();
-    String temp_str = String(sensor_data.temp);
-
-    radio->publish("iot/dev001/temp", temp_str.c_str());
+    SensorData sensor_data = sensor->poll();
+    
+    std::string json_message = serializer->to_json(sensor_data);
+    radio->publish("iot/devices/test_device_001/telemetry", json_message.c_str());
 
     delay(2000);
 }
