@@ -24,9 +24,4 @@ std::string Serializer::to_json(SensorData data)
     json += "\"humidity\": " + cast_to_string(data.humi);
     json += "}";
     return json;
-}   
-
-int Serializer::get()
-{
-    return 2;
-}
+} 

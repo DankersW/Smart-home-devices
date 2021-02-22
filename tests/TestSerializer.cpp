@@ -1,18 +1,28 @@
 #include "catch.hpp"
 #include "serializer.h"
+#include "types.h"
 
-TEST_CASE("Testing the simple Math module")
+
+TEST_CASE("Testing the Serializer class")
 {
-    //SimpleMath simple_math = SimpleMath();
-    Serializer seri = Serializer();
+    Serializer serializer = Serializer();
     
-    SECTION("Test simple ADD")
+    SECTION("Test to_json")
     {
-        //int sum = simple_math.add(1,2);
-        //REQUIRE(sum == 3);
+        SECTION("Test set 2: digit precision")
+        {
+            SensorData test_data = {12.04, 33.00};
+            std::string correct = "{\"temperature\": 12.04, \"humidity\": 33.00}";
+            std::string result = serializer.to_json(test_data);
+            REQUIRE(correct == result);
+        }
 
-        //sum = simple_math.add(2,2);
-        REQUIRE(4 == 4);
-        REQUIRE(seri.get() == 2);
+        SECTION("Test set 2: no precision")
+        {
+            SensorData test_data = {12, 33};
+            std::string correct = "{\"temperature\": 12.00, \"humidity\": 33.00}";
+            std::string result = serializer.to_json(test_data);
+            REQUIRE(correct == result);
+        }
     }
 }
