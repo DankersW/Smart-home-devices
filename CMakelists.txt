@@ -11,7 +11,7 @@ endif()
 project(
     smart_home_devices
     VERSION 1.0
-    DESCRIPTION "Simple IoT things based on the Arduino platform"
+    DESCRIPTION "Simple IoT units based on the Arduino platform"
     LANGUAGES CXX
 )
 

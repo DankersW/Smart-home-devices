@@ -3,16 +3,25 @@ name: unit_test
 on: [push]
 
 jobs:
-  ubuntu-build:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2.0.0
-    - name: Build project
-      uses: nicledomaS/cmake_build_action@v1.3
-      with:
-        submodule_update: ON
-        run_tests: ON
-        unit_test_build: -Dtest=ON
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Install packages
+        run: sudo apt-get install cmake
+
+      - name: PWD
+        run: |
+          pwd
+          ls -l
+          find -name "CMakelists.txt"
+
+      - name: Build
+        run: cmake .
+
+      - name: Run tests
+        run: make test
 
     
