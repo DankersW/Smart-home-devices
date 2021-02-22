@@ -1,0 +1,24 @@
+name: unit_test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Install tools
+        uses: apt-get install cmake
+
+      - name: Create build dir 
+        run: mkdir build && cd build
+
+      - name: Build
+        run: cmake .. && make
+
+      - name: Run tests
+        run: make test
+
+    
