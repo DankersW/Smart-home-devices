@@ -13,14 +13,13 @@ jobs:
         run: sudo apt-get install cmake
 
       - name: Create build dir 
-        run: |
-          pwd
-          ls
-          ls -l
-          cd smart-home-devices && mkdir build && cd build
+        run: mkdir build && cd build
 
       - name: Build
-        run: cmake .. && make
+        run: | 
+          ls -l
+          ls ../
+          cmake .. && make
 
       - name: Run tests
         run: make test
