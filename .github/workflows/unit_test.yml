@@ -9,8 +9,8 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v2
 
-      - name: Install tools
-        run: apt-get install cmake
+      - name: Install packages
+        run: sudo apt-get install cmake
 
       - name: Create build dir 
         run: mkdir build && cd build
