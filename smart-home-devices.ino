@@ -5,6 +5,7 @@
 #include "src/serializer.h"
 
 #define LED_BUILTIN 2
+#define TEN_MINUTES 600000
 
 Sensor *sensor = new Sensor();
 Radio *radio = new Radio();
@@ -29,9 +30,9 @@ void loop()
     SensorData sensor_data = sensor->poll();
     
     std::string json_message = serializer->to_json(sensor_data);
-    radio->publish("iot/devices/test_device_001/telemetry", json_message.c_str());
+    radio->publish("iot/devices/dev_001/telemetry", json_message.c_str());
 
-    delay(2000);
+    delay(TEN_MINUTES);
 }
 
 void blink_sequence()
