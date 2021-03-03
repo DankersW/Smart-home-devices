@@ -22,6 +22,7 @@ jobs:
           pwd
           ls -l
           find -name "CMakelists.txt"
+          which CMakelists.txt
 
       - name: Build
         run: |
