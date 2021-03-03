@@ -1,10 +1,9 @@
 name: unit_test
 
-on: [push]
-  
-  #push:
-  #  branches-ignore:
-  #    - '**'
+on: 
+  push:
+    branches-ignore:
+      - '**'
 
 jobs:
   test:
@@ -26,8 +25,6 @@ jobs:
 
       - name: Build
         run: |
-          cd smart-home-devices
-          cmake .
           cmake --version
           ls -l
           mkdir build
