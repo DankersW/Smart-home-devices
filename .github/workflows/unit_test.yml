@@ -26,6 +26,7 @@ jobs:
 
       - name: Build
         run: |
+          cd smart-home-devices
           cmake .
           cmake --version
           ls -l
