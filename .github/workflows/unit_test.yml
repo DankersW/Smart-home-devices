@@ -1,9 +1,10 @@
 name: unit_test
 
-on:
-  push:
-    branches-ignore:
-      - '**'
+on: [push]
+  
+  #push:
+  #  branches-ignore:
+  #    - '**'
 
 jobs:
   test:
