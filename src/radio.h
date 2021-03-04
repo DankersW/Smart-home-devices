@@ -16,7 +16,7 @@ class Radio
         } _wifi_cred;
         struct Mqtt_details
         {
-            const char* broker = "192.168.1.84";
+            const char* broker = "192.168.1.140";
             const int port = 1883;
             const char* device_id = "dev_001";
         } _mqtt_info;

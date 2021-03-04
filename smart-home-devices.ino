@@ -10,6 +10,8 @@ Sensor *sensor = new Sensor();
 Radio *radio = new Radio();
 Serializer *serializer = new Serializer();
 
+unsigned long time_previous_run = 0;
+
 void setup()
 {
     Serial.begin(9600);
@@ -26,12 +28,18 @@ void loop()
 {    
     radio->loop(); 
 
-    SensorData sensor_data = sensor->poll();
-    
-    std::string json_message = serializer->to_json(sensor_data);
-    radio->publish("iot/devices/test_device_001/telemetry", json_message.c_str());
+    if (millis() - time_previous_run >= 60000)
+    {
+        time_previous_run = millis();
+        update_sensor_data();
+    }
+}
 
-    delay(2000);
+void update_sensor_data()
+{
+    SensorData sensor_data = sensor->poll();
+    std::string json_message = serializer->to_json(sensor_data);
+    radio->publish("iot/devices/dev_001/telemetry", json_message.c_str());
 }
 
 void blink_sequence()
