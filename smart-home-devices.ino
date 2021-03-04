@@ -5,11 +5,12 @@
 #include "src/serializer.h"
 
 #define LED_BUILTIN 2
-#define TEN_MINUTES 600000
 
 Sensor *sensor = new Sensor();
 Radio *radio = new Radio();
 Serializer *serializer = new Serializer();
+
+unsigned long time_previous_run = 0;
 
 void setup()
 {
@@ -27,12 +28,18 @@ void loop()
 {    
     radio->loop(); 
 
+    if (millis() - time_previous_run >= 60000)
+    {
+        time_previous_run = millis();
+        update_sensor_data();
+    }
+}
+
+void update_sensor_data()
+{
     SensorData sensor_data = sensor->poll();
-    
     std::string json_message = serializer->to_json(sensor_data);
     radio->publish("iot/devices/dev_001/telemetry", json_message.c_str());
-
-    delay(TEN_MINUTES);
 }
 
 void blink_sequence()
