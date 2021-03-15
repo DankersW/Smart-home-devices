@@ -28,7 +28,7 @@ void loop()
 {    
     radio->loop(); 
 
-    if (millis() - time_previous_run >= 60000)
+    if (millis() - time_previous_run >= 600000)
     {
         time_previous_run = millis();
         update_sensor_data();
