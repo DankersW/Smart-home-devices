@@ -4,6 +4,8 @@
 
 - Update architectural overview
 
+- Change repo to be for more specifik, climate_sensor 
+
 ## Logging
 
 - Configurable logging class that logs to console, and remote logging using the communication layer
@@ -17,7 +19,6 @@
 ## System
 
 - Cleaning up memory, because of the keywork new when we create objects we have to delete memory. Every hour delete each object and re-create the system.
-- Monitor battery life
 - Communication layer
 - Configurable base layer
 - Generic base that each unit relies on with additional product functions (temperature reading, acting to events, etc)
@@ -30,6 +31,7 @@
 
 - good pattern holder inter layer communication
 - setup basic layers (communication, actor, enegery managment, processing, sensor, logging)
+- Systemconfig header file
 
 ### Radio
 
@@ -47,4 +49,3 @@
 - Publising sensor data correctly
 - To publish queue
 
-### PR result
