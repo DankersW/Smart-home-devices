@@ -44,7 +44,20 @@ void Radio::loop()
     _mqtt_client.loop();
 }
 
+void Radio::check_radio_status(void)
+{
+    if (WiFi.status() != WL_CONNECTED)
+    {
+        connect_to_network();
+    }
+    if (!_mqtt_client.connected())
+    {
+        connect_to_mqtt_broker();
+    }
+}
+
 bool Radio::publish(const char* topic, const char* payload)
 {
+    check_radio_status();
     return _mqtt_client.publish(topic, payload);
 }
