@@ -22,6 +22,7 @@ void setup()
     sensor->begin();
 
     blink_sequence();
+    digitalWrite(LED_BUILTIN, HIGH); // active low
 }
 
 void loop()
