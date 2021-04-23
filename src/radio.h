@@ -28,6 +28,7 @@ class Radio
         bool connect_to_mqtt_broker();
 
         void mqtt_msg_received(char* topic, byte* payload, unsigned int length);
+        void check_radio_status(void);
         
     public:
         Radio();
